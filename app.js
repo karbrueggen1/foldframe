@@ -1,14 +1,14 @@
 'use strict';
 
 // Inner-display aspect ratios from Samsung's model comparison (2026-08-12).
-// Fold 8 uses the user's exact 3:4 / 4:3; Ultra uses native display proportions.
+// Both models use native inner-display proportions in each orientation.
 const devices = {
-  fold8: { name: 'Galaxy Fold 8', width: 1848, portraitRatio: 3 / 4, portraitLabel: '3:4', landscapeLabel: '4:3' },
+  fold8: { name: 'Galaxy Fold 8', width: 1848, portraitRatio: 1848 / 2448, portraitLabel: '77:102', landscapeLabel: '102:77' },
   ultra: { name: 'Galaxy Fold 8 Ultra', width: 2256, portraitRatio: 2256 / 2504, portraitLabel: '282:313', landscapeLabel: '313:282' },
 };
 const slots = [
-  { id: 'portrait', title: 'Top photo', position: 'TOP', ratio: '3:4' },
-  { id: 'landscape', title: 'Bottom photo', position: 'BOTTOM', ratio: '4:3' },
+  { id: 'portrait', title: 'Top photo', position: 'TOP' },
+  { id: 'landscape', title: 'Bottom photo', position: 'BOTTOM' },
 ];
 const state = Object.fromEntries(slots.map(slot => [slot.id, { image: null, x: 50, y: 50, zoom: 1, version: 0 }]));
 let device = 'fold8';
@@ -19,7 +19,7 @@ const message = document.querySelector('#message');
 
 document.querySelector('#uploads').innerHTML = slots.map((slot, index) => `
   <div class="upload-card" id="${slot.id}-card">
-    <div class="upload-top"><strong>${index + 1}. ${slot.title}</strong><span class="format">${slot.position} · ${slot.ratio}</span></div>
+    <div class="upload-top"><strong>${index + 1}. ${slot.title}</strong><span class="format">${slot.position} · ${slot.id === 'portrait' ? devices[device].portraitLabel : devices[device].landscapeLabel}</span></div>
     <label class="drop-zone" id="${slot.id}-drop">
       <span class="upload-icon" aria-hidden="true">↑</span>
       <span class="file-title" id="${slot.id}-name">Choose a photo or drop it here</span>
