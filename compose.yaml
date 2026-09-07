@@ -1,0 +1,10 @@
+services:
+  fold-wallpaper:
+    build: .
+    ports:
+      - "${PORT:-8080}:80"
+    restart: unless-stopped
+    logging:
+      driver: "none"
+    security_opt:
+      - no-new-privileges:true

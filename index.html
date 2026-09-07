@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101412">
+  <title>FoldFrame</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header><a class="brand" href="./"><span class="brand-icon">◧</span> <span class="brand-name">FoldFrame</span></a><span class="header-note">Two photos. Both orientations. Your Fold.</span></header>
+  <main>
+    <section class="intro"><span class="eyebrow">YOUR MOMENTS. YOUR WALLPAPER.</span><h1>Better<br><em>together.</em></h1><p>Two photos. Both orientations. Your Fold.</p></section>
+    <div class="workspace">
+      <section class="editor" aria-label="Create your wallpaper">
+        <div class="step-title"><span>01</span><h2>Choose your Fold</h2></div>
+        <fieldset class="device-toggle"><legend class="sr-only">Choose your phone</legend><label><input type="radio" name="device" value="fold8" checked><span>Galaxy Fold 8</span></label><label><input type="radio" name="device" value="ultra"><span>Fold 8 Ultra</span></label></fieldset>
+        <p class="device-info" id="device-info"></p>
+        <div class="step-title"><span>02</span><h2>Add your photos</h2></div>
+        <p class="hint">Portrait on top, landscape below. Seamlessly joined.</p>
+        <div class="how-to"><strong>How it works</strong><p>Choose your phone and upload two photos. Drag each photo in the live preview to position it, then pinch with two fingers on the same photo or use Zoom to crop closer. Download your finished PNG.</p><p>Any image dimensions work: we crop to the selected format without stretching.</p></div>
+        <div id="uploads"></div>
+        <p class="privacy">◈ Photos are processed only in your browser. No uploads, cookies or tracking. Only your downloaded PNG is saved by you.</p>
+        <p id="message" role="status" aria-live="polite"></p>
+      </section>
+      <section class="preview-panel" aria-label="Collage preview">
+        <div class="preview-heading"><span class="eyebrow">LIVE PREVIEW</span><span class="badge" id="badge">0 / 2 photos</span></div>
+        <div class="canvas-stage"><div class="paper"><canvas id="preview" aria-label="Drag either photo to reposition its crop. Pinch with two fingers to zoom, or use the sliders with a keyboard."></canvas></div></div>
+        <p class="preview-tip">Drag to position · Pinch with two fingers to zoom</p>
+        <div class="export-details"><strong id="resolution"></strong><span>PNG · full resolution</span></div>
+        <button id="download" disabled>Download wallpaper <span aria-hidden="true">↓</span></button>
+        <p class="export-hint" id="export-hint">Upload both photos to get started.</p>
+      </section>
+    </div>
+    <section class="setup-guide" aria-labelledby="setup-title">
+      <div class="step-title"><span>03</span><h2 id="setup-title">Set it on your Galaxy Fold</h2></div>
+      <p class="setup-intro">Set the portrait and landscape views before you confirm.</p>
+      <ol class="setup-steps">
+        <li><strong>Open in Gallery</strong><p>Download your collage and open it in Samsung Gallery. Open the menu and choose Set as wallpaper.</p></li>
+        <li><strong>Position the portrait view</strong><p>Rotate your Fold to portrait orientation. Drag the wallpaper until the top, portrait section of the collage is correctly framed on the screen.</p></li>
+        <li><strong>Position the landscape view</strong><p>While still in the wallpaper preview, rotate your phone to landscape orientation. Now drag the wallpaper until the bottom, landscape section is correctly framed on the screen.</p></li>
+        <li><strong>Confirm with OK</strong><p>Once you have positioned both views, tap OK to apply your wallpaper.</p></li>
+      </ol>
+    </section>
+    <footer><span>Made for your favorite moments.</span><span>FOLDFRAME / 2026</span></footer>
+  </main>
+</body>
+</html>
