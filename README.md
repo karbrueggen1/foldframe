@@ -137,7 +137,7 @@ Photos automatically fill their frames without stretching or gaps. At minimum zo
 | Galaxy Fold 8 | 77:102 | 102:77 | 1848 × 3843 | 1848 × 2448 | 1848 × 1395 |
 | Galaxy Fold 8 Ultra | 282:313 | 313:282 | 2256 × 4537 | 2256 × 2504 | 2256 × 2033 |
 
-Both models use their actual inner-display proportions. The bottom section is scaled to the same width as the top, with its height rounded to the nearest whole pixel: Fold 8, 1395.06 → 1395; Fold 8 Ultra, 2032.61 → 2033. Switching devices updates both frames and retains the selected photos. The combined collage is taller than the inner display; your phone may crop it when applying it as a full-screen wallpaper.
+Both models use their actual inner-display proportions. The bottom section is scaled to the same width as the top, with its height rounded to the nearest whole pixel: Fold 8, 1395.06 → 1395; Fold 8 Ultra, 2032.56 → 2033. Switching devices updates both frames and retains the selected photos. The combined collage is taller than the inner display; your phone may crop it when applying it as a full-screen wallpaper.
 
 Ultra proportions are based on the 2256 × 2504 inner display in [Samsung's comparison, updated August 12, 2026](https://www.samsung.com/ie/support/mobile-devices/what-is-the-difference-between-the-galaxy-z-fold8-ultra-and-z-fold8/), accessed September 7, 2026. Fold 8 proportions are based on its [1848 × 2448 inner-display resolution](https://www.samsung.com/uk/business/smartphones/galaxy-z/galaxy-z-fold8-lavender-256gb-sm-f971blvbeub/), also accessed September 7, 2026. Its commonly stated 3:4 / 4:3 format is approximate; FoldFrame uses 77:102 / 102:77 instead. Device settings are at the top of `app.js`.
 
