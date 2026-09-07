@@ -106,30 +106,6 @@ docker rm foldframe
 
 The image includes the same Nginx configuration and health check. After changing the source, rebuild the image and recreate the container to deploy the change.
 
-## Host on your own domain
-
-1. Deploy the project on your server using one of the methods above.
-2. Point your domain’s DNS record to that server, or configure it with your existing reverse proxy or tunnel provider.
-3. Configure an HTTPS reverse proxy for your domain. If the proxy runs directly on the same host, forward requests to `http://127.0.0.1:8080`. Configure a TLS certificate for your domain at the proxy; the app container itself serves HTTP.
-4. If the host-based proxy is the only intended entry point, change the port mapping in `compose.yaml` to `"127.0.0.1:${PORT:-8080}:80"` and recreate the container. For plain Docker, use `-p 127.0.0.1:8080:80` instead. This prevents direct access to the app port from other machines.
-5. If your proxy runs in another Docker container, connect both services to a shared Docker network and use `http://fold-wallpaper:80` as the upstream for the Compose service. `127.0.0.1` inside the proxy container refers to the proxy itself.
-6. Disable visitor logging, analytics and caching at the proxy or hosting provider too. Verify your domain loads the app and `/health` returns `ok`.
-
-## GitHub Pages demo
-
-Demo URL: **https://karbrueggen1.github.io/foldframe/**
-
-To enable the demo for this repository:
-
-1. Open **Settings → Pages**.
-2. Under **Build and deployment**, choose **Deploy from a branch**.
-3. Select the **main** branch and **/(root)** folder, then click **Save**.
-4. Wait for the Pages deployment to finish. Check the **Actions** tab for its status.
-
-The `.nojekyll` file tells GitHub to serve the static files without Jekyll processing. No Docker container or custom build command is needed. Future pushes to `main` automatically update the demo. For a fork, use your own GitHub username and repository name in the demo URL.
-
-The demo processes all photos locally in the browser. GitHub Pages logs visitors' IP addresses for security purposes; see [GitHub's Pages documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages). The self-hosted Docker logging settings do not apply to GitHub's infrastructure.
-
 ## Host as a static website
 
 The app needs only three files: `index.html`, `style.css` and `app.js`. You can serve those files together from any static web server; there is no compilation step or backend API.
