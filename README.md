@@ -4,6 +4,8 @@
 
 *Two photos. Both orientations. Your Fold.*
 
+[Open the demo](https://karbrueggen1.github.io/foldframe/)
+
 ![FoldFrame app with device selection, photo inputs, live collage preview and wallpaper setup instructions](docs/screenshot.png)
 
 FoldFrame is a wallpaper collage generator for the Galaxy Fold 8 and Fold 8 Ultra. Combine a portrait section and a landscape section into one PNG, then position each section in your phone’s wallpaper editor for its matching orientation.
@@ -112,6 +114,21 @@ The image includes the same Nginx configuration and health check. After changing
 4. If the host-based proxy is the only intended entry point, change the port mapping in `compose.yaml` to `"127.0.0.1:${PORT:-8080}:80"` and recreate the container. For plain Docker, use `-p 127.0.0.1:8080:80` instead. This prevents direct access to the app port from other machines.
 5. If your proxy runs in another Docker container, connect both services to a shared Docker network and use `http://fold-wallpaper:80` as the upstream for the Compose service. `127.0.0.1` inside the proxy container refers to the proxy itself.
 6. Disable visitor logging, analytics and caching at the proxy or hosting provider too. Verify your domain loads the app and `/health` returns `ok`.
+
+## GitHub Pages demo
+
+Demo URL: **https://karbrueggen1.github.io/foldframe/**
+
+To enable the demo for this repository:
+
+1. Open **Settings → Pages**.
+2. Under **Build and deployment**, choose **Deploy from a branch**.
+3. Select the **main** branch and **/(root)** folder, then click **Save**.
+4. Wait for the Pages deployment to finish. Check the **Actions** tab for its status.
+
+The `.nojekyll` file tells GitHub to serve the static files without Jekyll processing. No Docker container or custom build command is needed. Future pushes to `main` automatically update the demo. For a fork, use your own GitHub username and repository name in the demo URL.
+
+The demo processes all photos locally in the browser. GitHub Pages logs visitors' IP addresses for security purposes; see [GitHub's Pages documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages). The self-hosted Docker logging settings do not apply to GitHub's infrastructure.
 
 ## Host as a static website
 
