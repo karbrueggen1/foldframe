@@ -2,9 +2,10 @@
 
 // Inner-display aspect ratios from Samsung's model comparison (2026-08-12).
 // Both models use native inner-display proportions in each orientation.
+// Export at the long display edge: landscape stays native, portrait scales down.
 const devices = {
-  fold8: { name: 'Galaxy Fold 8', width: 1848, portraitRatio: 1848 / 2448, portraitLabel: '77:102', landscapeLabel: '102:77' },
-  ultra: { name: 'Galaxy Fold 8 Ultra', width: 2256, portraitRatio: 2256 / 2504, portraitLabel: '282:313', landscapeLabel: '313:282' },
+  fold8: { name: 'Galaxy Fold 8', width: 2448, portraitRatio: 1848 / 2448, portraitLabel: '77:102', landscapeLabel: '102:77' },
+  ultra: { name: 'Galaxy Fold 8 Ultra', width: 2504, portraitRatio: 2256 / 2504, portraitLabel: '282:313', landscapeLabel: '313:282' },
 };
 const slots = [
   { id: 'portrait', title: 'Top photo', position: 'TOP' },
