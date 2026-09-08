@@ -20,7 +20,7 @@ const message = document.querySelector('#message');
 
 document.querySelector('#uploads').innerHTML = slots.map((slot, index) => `
   <div class="upload-card" id="${slot.id}-card">
-    <div class="upload-top"><strong>${index + 1}. ${slot.title}</strong><span class="format">${slot.position} · ${slot.id === 'portrait' ? devices[device].portraitLabel : devices[device].landscapeLabel}</span></div>
+    <div class="upload-top"><strong>${index + 1}. ${slot.title}</strong><span class="format">${slot.position}</span></div>
     <label class="drop-zone" id="${slot.id}-drop">
       <span class="upload-icon" aria-hidden="true">↑</span>
       <span class="file-title" id="${slot.id}-name">Choose a photo or drop it here</span>
@@ -99,10 +99,9 @@ function render() {
   const bottomHeight = Math.round(width * portraitRatio);
   slots.forEach(slot => {
     const isPortrait = slot.id === 'portrait';
-    const ratio = isPortrait ? portraitLabel : landscapeLabel;
     const height = isPortrait ? topHeight : bottomHeight;
-    document.querySelector(`#${slot.id}-card .format`).textContent = `${slot.position} · ${ratio}`;
-    document.querySelector(`#${slot.id}-recommendation`).textContent = `Recommended: ${ratio} ${isPortrait ? 'portrait' : 'landscape'} · ${width} × ${height} px or larger`;
+    document.querySelector(`#${slot.id}-card .format`).textContent = slot.position;
+    document.querySelector(`#${slot.id}-recommendation`).textContent = `Recommended: ${isPortrait ? 'Portrait' : 'Landscape'} · ${width} × ${height} px or larger`;
   });
   canvas.width = width;
   canvas.height = topHeight + bottomHeight;
