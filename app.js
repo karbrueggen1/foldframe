@@ -24,8 +24,9 @@ document.querySelector('#uploads').innerHTML = slots.map((slot, index) => `
     <label class="drop-zone" id="${slot.id}-drop">
       <span class="upload-icon" aria-hidden="true">↑</span>
       <span class="file-title" id="${slot.id}-name">Choose a photo or drop it here</span>
+      <span class="upload-recommendation" id="${slot.id}-recommendation"></span>
       <span class="file-meta">JPG, PNG or WebP · up to 25 MB</span>
-      <input type="file" id="${slot.id}-file" accept="image/jpeg,image/png,image/webp" aria-label="Upload ${slot.title}">
+      <input type="file" id="${slot.id}-file" accept="image/jpeg,image/png,image/webp" aria-label="Upload ${slot.title}" aria-describedby="${slot.id}-recommendation">
     </label>
     <div class="adjustments" id="${slot.id}-adjust" hidden>
       <label><span>Horizontal</span><input aria-label="${slot.title}: horizontal crop position" type="range" min="0" max="100" value="50" data-slot="${slot.id}" data-key="x"></label>
@@ -97,7 +98,11 @@ function render() {
   const topHeight = Math.round(width / portraitRatio);
   const bottomHeight = Math.round(width * portraitRatio);
   slots.forEach(slot => {
-    document.querySelector(`#${slot.id}-card .format`).textContent = `${slot.position} · ${slot.id === 'portrait' ? portraitLabel : landscapeLabel}`;
+    const isPortrait = slot.id === 'portrait';
+    const ratio = isPortrait ? portraitLabel : landscapeLabel;
+    const height = isPortrait ? topHeight : bottomHeight;
+    document.querySelector(`#${slot.id}-card .format`).textContent = `${slot.position} · ${ratio}`;
+    document.querySelector(`#${slot.id}-recommendation`).textContent = `Recommended: ${ratio} ${isPortrait ? 'portrait' : 'landscape'} · ${width} × ${height} px or larger`;
   });
   canvas.width = width;
   canvas.height = topHeight + bottomHeight;
